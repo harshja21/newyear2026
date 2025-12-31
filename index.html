@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Year Surprise</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/framer-motion@10.16.4/dist/framer-motion.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@400;600&display=swap');
+        body { font-family: 'Quicksand', sans-serif; background: #fff5f8; overflow-x: hidden; }
+        .handwritten { font-family: 'Dancing Script', cursive; }
+        .card-inner { transition: transform 0.6s; transform-style: preserve-3d; cursor: pointer; }
+        .card-flipped { transform: rotateY(180deg); }
+        .card-front, .card-back { backface-visibility: hidden; position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+        .card-back { transform: rotateY(180deg); }
+    </style>
+</head>
+<body>
+
+    <audio id="bgMusic" loop>
+        <source src=""C:\Users\harsh jain\OneDrive\Desktop\New Year Surprise\song.mp3.mp3">
+    </audio>
+
+    <div id="root" class="min-h-screen flex items-center justify-center p-4">
+        
+        <div id="screen1" class="text-center">
+            <div class="mb-6 text-6xl">✨💖</div>
+            <h1 class="text-3xl font-bold text-pink-600 mb-4">Happy New Year 2026!</h1>
+            <p class="text-gray-600 mb-8">Click below to start your new year journey</p>
+            <button onclick="showScreen(2)" class="bg-pink-500 hover:bg-pink-600 text-white px-8 py-3 rounded-full shadow-lg transition-transform hover:scale-105">
+                Begin Celebration
+            </button>
+        </div>
+
+        <div id="screen2" class="hidden w-full max-w-md">
+            <div class="bg-white p-8 rounded-2xl shadow-xl border-t-8 border-pink-400">
+                <h2 class="handwritten text-3xl text-pink-500 mb-4">My Love Gunnu,</h2>
+                <p class="text-gray-700 leading-relaxed mb-6">
+                    As the year turns, I wanted to let you know how much you mean to me. May your 2026 be filled with as much joy as you bring into my life. Every moment with you is a treasure.
+                </p>
+                <button onclick="showScreen(3)" class="w-full bg-purple-400 text-white py-2 rounded-lg hover:bg-purple-500">Continue to Wishes →</button>
+            </div>
+        </div>
+
+        <div id="screen3" class="hidden text-center w-full max-w-4xl">
+            <h2 class="text-2xl font-bold text-pink-600 mb-8">Tap each card to reveal a wish</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="relative h-64 w-full" onclick="flipCard(this)">
+                    <div class="card-inner bg-white rounded-xl shadow-md h-full w-full border-2 border-pink-100 flex items-center justify-center p-4">
+                        <div class="card-front flex flex-col items-center justify-center">
+                            <img src="https://i.pinimg.com/originals/91/2c/8e/912c8e6a17b8f9e2b8c9d46f5a34e8f1.png" class="w-24 mb-2">
+                            <span class="text-sm text-pink-400 font-bold">Tap Me</span>
+                        </div>
+                        <div class="card-back flex items-center justify-center bg-pink-50 rounded-xl p-4">
+                            <p class="text-pink-700 font-medium">May your year be full of surprises and endless smiles! 🌸</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative h-64 w-full" onclick="flipCard(this)">
+                    <div class="card-inner bg-white rounded-xl shadow-md h-full w-full border-2 border-pink-100 flex items-center justify-center p-4">
+                        <div class="card-front flex flex-col items-center justify-center">
+                            <img src="https://i.pinimg.com/originals/6a/8a/39/6a8a39e3f65e4e84e590740995c7674d.png" class="w-24 mb-2">
+                             <span class="text-sm text-pink-400 font-bold">Tap Me</span>
+                        </div>
+                        <div class="card-back flex items-center justify-center bg-pink-50 rounded-xl p-4">
+                            <p class="text-pink-700 font-medium">Wishing you health, success, and all the love you deserve! ❤️</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative h-64 w-full" onclick="flipCard(this)">
+                    <div class="card-inner bg-white rounded-xl shadow-md h-full w-full border-2 border-pink-100 flex items-center justify-center p-4">
+                        <div class="card-front flex flex-col items-center justify-center">
+                            <img src="https://i.postimg.cc/mD3m6mS8/spiderman.png" class="w-24 mb-2">
+                             <span class="text-sm text-pink-400 font-bold">Tap Me</span>
+                        </div>
+                        <div class="card-back flex items-center justify-center bg-pink-50 rounded-xl p-4">
+                            <p class="text-pink-700 font-medium">Let's make 2026 our best adventure yet! 🕷️✨</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button id="finalBtn" onclick="showScreen(4)" class="mt-12 opacity-0 bg-pink-500 text-white px-10 py-3 rounded-full transition-opacity duration-1000">Final Surprise 🎁</button>
+        </div>
+
+        <div id="screen4" class="hidden text-center">
+            <h1 class="text-5xl mb-6">🎊</h1>
+            <h2 class="text-3xl font-bold text-pink-600 mb-4">Wish Sealed for 2026!</h2>
+            <p class="text-gray-600 mb-8">You are ready for a magical year.</p>
+            <button onclick="confettiExplosion()" class="bg-gradient-to-r from-pink-400 to-purple-500 text-white px-8 py-3 rounded-full shadow-lg">Send a Virtual Hug 🤗</button>
+        </div>
+
+    </div>
+
+    <script>
+        let cardsFlipped = 0;
+
+        function showScreen(num) {
+            document.querySelectorAll('#root > div').forEach(div => div.classList.add('hidden'));
+            document.getElementById('screen' + num).classList.remove('hidden');
+            if(num === 1) document.getElementById('bgMusic').play();
+            if(num === 4) confettiExplosion();
+        }
+
+        function flipCard(el) {
+            const inner = el.querySelector('.card-inner');
+            if(!inner.classList.contains('card-flipped')) {
+                inner.classList.add('card-flipped');
+                cardsFlipped++;
+                if(cardsFlipped === 3) {
+                    document.getElementById('finalBtn').classList.remove('opacity-0');
+                }
+            }
+        }
+
+        function confettiExplosion() {
+            confetti({
+                particleCount: 150,
+                spread: 70,
+                origin: { y: 0.6 },
+                colors: ['#ff69b4', '#ffb6c1', '#ffffff']
+            });
+        }
+    </script>
+</body>
+</html>
