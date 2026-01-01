@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For My Dear Gunnuji</title>
+    <title>For Dear Khushiiii</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/framer-motion@10.16.4/dist/framer-motion.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap');
-        body { font-family: 'Quicksand', sans-serif; background-color: #fdf2f8; overflow: hidden; }
+        body { font-family: 'Quicksand', sans-serif; background-color: #fdf2f8; overflow: hidden; margin: 0; }
         
         /* Butterflies Animation */
-        .butterfly { position: absolute; font-size: 2rem; animation: fly 4s infinite ease-in-out; opacity: 0; }
+        .butterfly { position: absolute; font-size: 2.5rem; animation: fly 4s infinite ease-in-out; opacity: 0; }
         @keyframes fly {
             0% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
             20% { opacity: 1; }
@@ -21,15 +21,16 @@
         }
 
         /* Card Flip */
-        .card-inner { transition: transform 0.6s; transform-style: preserve-3d; }
+        .card-inner { transition: transform 0.6s; transform-style: preserve-3d; height: 100%; position: relative; }
         .is-flipped { transform: rotateY(180deg); }
-        .card-face { backface-visibility: hidden; position: absolute; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; border-radius: 12px; }
+        .card-face { backface-visibility: hidden; position: absolute; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; border-radius: 12px; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1); }
         .card-back { transform: rotateY(180deg); background-color: white; border: 2px solid #fbcfe8; }
 
-        /* Floating Hearts */
-        .heart-float { position: fixed; bottom: 0; font-size: 24px; animation: floatUp 3s linear forwards; z-index: 50; }
+        /* Floating Hugs */
+        .hug-float { position: fixed; bottom: -50px; font-size: 40px; animation: floatUp 3s linear forwards; z-index: 100; pointer-events: none; }
         @keyframes floatUp {
-            to { transform: translateY(-100vh) translateX(50px); opacity: 0; }
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-110vh) rotate(20deg); opacity: 0; }
         }
     </style>
 </head>
@@ -38,24 +39,25 @@
     <div id="screen1" class="text-center">
         <div class="relative w-32 h-32 mx-auto">
             <div class="butterfly" style="left:0; top:0;">🦋</div>
-            <div class="butterfly" style="left:20px; top:40px; animation-delay: 1s;">🦋</div>
+            <div class="butterfly" style="left:30px; top:40px; animation-delay: 1.5s;">🦋</div>
         </div>
-        <p class="mt-4 text-pink-400 font-semibold animate-pulse">Loading special wishes...</p>
-        <button onclick="showScreen(2)" class="mt-8 text-pink-500 underline text-sm">Click to enter</button>
+        <p class="mt-4 text-pink-400 font-bold animate-pulse">Loading special wishes...</p>
+        <button onclick="showScreen(2)" class="mt-8 text-pink-300 underline text-xs">Skip to enter</button>
     </div>
 
-    <div id="screen2" class="hidden w-full max-w-sm bg-white rounded-2xl shadow-2xl overflow-hidden border border-pink-100">
-        <div class="bg-pink-100 p-2 flex justify-between items-center px-4">
-            <span class="text-xs text-pink-400 font-bold">A Note for You ✨</span>
+    <div id="screen2" class="hidden w-[90%] max-w-sm bg-white rounded-2xl shadow-2xl overflow-hidden border border-pink-100">
+        <div class="bg-pink-100 p-3 flex justify-between items-center px-4">
+            <span class="text-xs text-pink-500 font-bold">A Note for You 💖</span>
             <div class="flex gap-1">
-                <div class="w-2 h-2 rounded-full bg-pink-300"></div>
-                <div class="w-2 h-2 rounded-full bg-pink-300"></div>
+                <div class="w-2.5 h-2.5 rounded-full bg-red-300"></div>
+                <div class="w-2.5 h-2.5 rounded-full bg-yellow-300"></div>
+                <div class="w-2.5 h-2.5 rounded-full bg-green-300"></div>
             </div>
         </div>
         <div class="p-8 text-center">
             <img src="https://i.pinimg.com/originals/c9/22/68/c922687f872658a0a916e788649830f2.png" class="w-20 mx-auto mb-4">
             <h1 class="text-2xl font-bold text-gray-800 mb-2">Happy New Year 2026!</h1>
-            <p class="text-gray-500 text-sm mb-6">Wishing you joy, success, and endless happiness in the coming year!</p>
+            <p class="text-gray-500 text-sm mb-6 px-2">Wishing you joy, success, and endless happiness in the coming year!</p>
             <button onclick="showScreen(3)" class="bg-pink-500 hover:bg-pink-600 text-white w-full py-3 rounded-xl font-bold transition-all shadow-lg shadow-pink-200">
                 Begin Celebration
             </button>
@@ -64,25 +66,24 @@
 
     <div id="screen3" class="hidden text-center">
         <h2 class="text-xl font-bold text-pink-600 mb-8">A New Year Letter 💌</h2>
-        <div onclick="showScreen(4)" class="cursor-pointer transition-transform hover:scale-110">
+        <div onclick="showScreen(4)" class="cursor-pointer transition-transform hover:scale-110 active:scale-95">
             <div class="w-48 h-32 bg-pink-200 mx-auto rounded-lg shadow-xl relative flex items-center justify-center">
-                <div class="absolute top-0 left-0 w-full h-full border-2 border-white rounded-lg"></div>
-                <div class="text-4xl">✉️</div>
-                <div class="absolute bottom-2 text-[10px] text-pink-500 font-bold uppercase tracking-widest">Open Me</div>
+                <div class="absolute top-0 left-0 w-full h-full border-2 border-white rounded-lg opacity-50"></div>
+                <div class="text-5xl">✉️</div>
+                <div class="absolute bottom-2 text-[10px] text-pink-600 font-bold uppercase tracking-widest">Tap to Open</div>
             </div>
         </div>
-        <p class="mt-6 text-pink-400 text-sm">Click to open your New Year wish</p>
     </div>
 
-    <div id="screen4" class="hidden w-full max-w-md px-4">
-        <div class="bg-white p-8 rounded-3xl shadow-xl border-l-8 border-pink-400 relative">
-            <div class="absolute -top-6 -right-4 text-4xl">🐱</div>
-            <h3 class="font-bold text-pink-500 mb-4 text-lg">My Dear Gunnuji,</h3>
-            <p class="text-gray-600 leading-relaxed text-sm mb-6">
+    <div id="screen4" class="hidden w-[95%] max-w-md px-4">
+        <div class="bg-white p-8 rounded-3xl shadow-xl border-t-8 border-pink-400 relative">
+            <div class="absolute -top-6 -right-2 text-5xl">🐱</div>
+            <h3 class="font-bold text-pink-500 mb-4 text-xl">My Dear Gunnuji,</h3>
+            <p class="text-gray-600 leading-relaxed text-sm mb-8">
                 As the year turns, may your days be filled with laughter, love, and new adventures. May every dream you chase bring you closer to happiness and every moment be one worth cherishing. <br><br>
-                Wishing you a fantastic 2026 ahead! Happy New Year!
+                I am so glad to have you in my life. Wishing you a fantastic 2026!
             </p>
-            <button onclick="showScreen(5)" class="w-full bg-pink-500 text-white py-3 rounded-full font-bold">Continue to Wishes →</button>
+            <button onclick="showScreen(5)" class="w-full bg-pink-500 text-white py-3 rounded-full font-bold shadow-lg shadow-pink-100">Continue to Wishes →</button>
         </div>
     </div>
 
@@ -90,28 +91,28 @@
         <h2 class="text-2xl font-bold text-pink-600 mb-8">New Year Wishes</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div class="relative h-48 cursor-pointer" onclick="flip(this)">
-                <div class="card-inner w-full h-full relative">
-                    <div class="card-face bg-white shadow-md border-2 border-pink-50">
+                <div class="card-inner w-full h-full">
+                    <div class="card-face bg-white border-2 border-pink-50">
                         <img src="https://i.pinimg.com/originals/91/2c/8e/912c8e6a17b8f9e2b8c9d46f5a34e8f1.png" class="w-16">
                     </div>
                     <div class="card-face card-back p-4 text-sm text-pink-600 font-bold">
-                        May your year be filled with new hopes and new beginnings!
+                        May your year be filled with new hopes and new beginnings! 🌟
                     </div>
                 </div>
             </div>
             <div class="relative h-48 cursor-pointer" onclick="flip(this)">
-                <div class="card-inner w-full h-full relative">
-                    <div class="card-face bg-white shadow-md border-2 border-pink-50">
+                <div class="card-inner w-full h-full">
+                    <div class="card-face bg-white border-2 border-pink-50">
                          <img src="https://i.pinimg.com/originals/6a/8a/39/6a8a39e3f65e4e84e590740995c7674d.png" class="w-16">
                     </div>
                     <div class="card-face card-back p-4 text-sm text-pink-600 font-bold">
-                        I love you so much! Wishing you wealth and health in 2026! ❤️
+                        I am Sorry for my doings and hurting you wishing you health and wealth in 2026 ❤️
                     </div>
                 </div>
             </div>
             <div class="relative h-48 cursor-pointer" onclick="flip(this)">
-                <div class="card-inner w-full h-full relative">
-                    <div class="card-face bg-white shadow-md border-2 border-pink-50">
+                <div class="card-inner w-full h-full">
+                    <div class="card-face bg-white border-2 border-pink-50">
                         <img src="https://i.postimg.cc/mD3m6mS8/spiderman.png" class="w-16">
                     </div>
                     <div class="card-face card-back p-4 text-sm text-pink-600 font-bold">
@@ -120,15 +121,15 @@
                 </div>
             </div>
         </div>
-        <button id="finalBtn" onclick="showScreen(6)" class="mt-10 opacity-0 bg-pink-500 text-white px-8 py-3 rounded-full transition-all duration-500">Open Final Wish ✨</button>
+        <button id="finalBtn" onclick="showScreen(6)" class="mt-10 opacity-0 bg-pink-500 text-white px-8 py-3 rounded-full transition-all duration-700 shadow-lg">Final Surprise 🎁</button>
     </div>
 
-    <div id="screen6" class="hidden text-center">
-        <div class="bg-white p-10 rounded-3xl shadow-2xl border-2 border-pink-100">
-            <div class="text-5xl mb-4">🏆</div>
+    <div id="screen6" class="hidden text-center px-4">
+        <div class="bg-white p-10 rounded-3xl shadow-2xl border-2 border-pink-50 max-w-sm mx-auto">
+            <div class="text-6xl mb-4">💝</div>
             <h2 class="text-2xl font-bold text-pink-600">Wish Sealed for 2026</h2>
-            <p class="text-gray-400 text-sm mt-2 mb-8">Wishing You A Happy New Year!</p>
-            <button onclick="sendHugs()" class="bg-green-400 hover:bg-green-500 text-white px-8 py-3 rounded-full font-bold transition-all transform hover:scale-105 shadow-lg shadow-green-100">
+            <p class="text-gray-400 text-sm mt-2 mb-8">Sending you all my love!</p>
+            <button onclick="sendHugs()" class="bg-green-400 hover:bg-green-500 text-white w-full py-4 rounded-full font-bold transition-all transform active:scale-95 shadow-lg shadow-green-100 flex items-center justify-center gap-2">
                 Send a Virtual Hug 🤗
             </button>
         </div>
@@ -143,7 +144,7 @@
             next.classList.remove('hidden');
             
             if(n === 6) {
-                confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 }, colors: ['#ec4899', '#fbcfe8'] });
+                confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 }, colors: ['#f472b6', '#fb7185', '#ffffff'] });
             }
         }
 
@@ -154,28 +155,33 @@
                 flippedCount++;
                 if(flippedCount === 3) {
                     document.getElementById('finalBtn').classList.remove('opacity-0');
+                    document.getElementById('finalBtn').classList.add('animate-bounce');
                 }
             }
         }
 
         function sendHugs() {
-            // This creates the "Love You" heart flow effect
-            for(let i=0; i<15; i++) {
+            // This creates ONLY "Hugging Face" emojis
+            for(let i=0; i<25; i++) {
                 setTimeout(() => {
-                    const heart = document.createElement('div');
-                    heart.innerHTML = "❤️";
-                    heart.className = "heart-float";
-                    heart.style.left = Math.random() * 100 + "vw";
-                    heart.style.animationDuration = (Math.random() * 2 + 2) + "s";
-                    document.body.appendChild(heart);
-                    setTimeout(() => heart.remove(), 3000);
-                }, i * 200);
+                    const hug = document.createElement('div');
+                    hug.innerHTML = "🤗";
+                    hug.className = "hug-float";
+                    hug.style.left = (Math.random() * 85 + 5) + "vw";
+                    hug.style.animationDuration = (Math.random() * 1.5 + 2) + "s";
+                    document.body.appendChild(hug);
+                    setTimeout(() => hug.remove(), 3000);
+                }, i * 120);
             }
-            confetti({ particleCount: 50, velocity: 30, spread: 360, origin: { y: 0.8 } });
+            confetti({ particleCount: 40, spread: 50, origin: { y: 0.7 } });
         }
 
-        // Initialize butterfly positions
-        setTimeout(() => showScreen(2), 3000);
+        // Wait 3 seconds then show the Welcome screen
+        setTimeout(() => {
+            if(!document.getElementById('screen1').classList.contains('hidden')) {
+                showScreen(2);
+            }
+        }, 3500);
     </script>
 </body>
 </html>
