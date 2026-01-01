@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For Dear Khushiiii</title>
+    <title>For My Dear Khushiiii</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/framer-motion@10.16.4/dist/framer-motion.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
@@ -11,7 +11,6 @@
         @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap');
         body { font-family: 'Quicksand', sans-serif; background-color: #fdf2f8; overflow: hidden; margin: 0; }
         
-        /* Butterflies Animation */
         .butterfly { position: absolute; font-size: 2.5rem; animation: fly 4s infinite ease-in-out; opacity: 0; }
         @keyframes fly {
             0% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
@@ -20,17 +19,15 @@
             100% { transform: translate(100px, -100px) rotate(45deg); opacity: 0; }
         }
 
-        /* Card Flip */
         .card-inner { transition: transform 0.6s; transform-style: preserve-3d; height: 100%; position: relative; }
         .is-flipped { transform: rotateY(180deg); }
         .card-face { backface-visibility: hidden; position: absolute; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; border-radius: 12px; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1); }
         .card-back { transform: rotateY(180deg); background-color: white; border: 2px solid #fbcfe8; }
 
-        /* Floating Hugs */
-        .hug-float { position: fixed; bottom: -50px; font-size: 40px; animation: floatUp 3s linear forwards; z-index: 100; pointer-events: none; }
+        .hug-float { position: fixed; bottom: -50px; font-size: 45px; animation: floatUp 3s linear forwards; z-index: 100; pointer-events: none; }
         @keyframes floatUp {
             0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(-110vh) rotate(20deg); opacity: 0; }
+            100% { transform: translateY(-110vh) rotate(25deg); opacity: 0; }
         }
     </style>
 </head>
@@ -41,7 +38,7 @@
             <div class="butterfly" style="left:0; top:0;">🦋</div>
             <div class="butterfly" style="left:30px; top:40px; animation-delay: 1.5s;">🦋</div>
         </div>
-        <p class="mt-4 text-pink-400 font-bold animate-pulse">Loading special wishes...</p>
+        <p class="mt-4 text-pink-400 font-bold animate-pulse">Loading special wishes for Khushiiii...</p>
         <button onclick="showScreen(2)" class="mt-8 text-pink-300 underline text-xs">Skip to enter</button>
     </div>
 
@@ -78,7 +75,7 @@
     <div id="screen4" class="hidden w-[95%] max-w-md px-4">
         <div class="bg-white p-8 rounded-3xl shadow-xl border-t-8 border-pink-400 relative">
             <div class="absolute -top-6 -right-2 text-5xl">🐱</div>
-            <h3 class="font-bold text-pink-500 mb-4 text-xl">My Dear Gunnuji,</h3>
+            <h3 class="font-bold text-pink-500 mb-4 text-xl">My Dear Khushiiii ❤️,</h3>
             <p class="text-gray-600 leading-relaxed text-sm mb-8">
                 As the year turns, may your days be filled with laughter, love, and new adventures. May every dream you chase bring you closer to happiness and every moment be one worth cherishing. <br><br>
                 I am so glad to have you in my life. Wishing you a fantastic 2026!
@@ -161,8 +158,8 @@
         }
 
         function sendHugs() {
-            // This creates ONLY "Hugging Face" emojis
-            for(let i=0; i<25; i++) {
+            // ONLY Hugging Face Emojis
+            for(let i=0; i<30; i++) {
                 setTimeout(() => {
                     const hug = document.createElement('div');
                     hug.innerHTML = "🤗";
@@ -171,12 +168,11 @@
                     hug.style.animationDuration = (Math.random() * 1.5 + 2) + "s";
                     document.body.appendChild(hug);
                     setTimeout(() => hug.remove(), 3000);
-                }, i * 120);
+                }, i * 100);
             }
             confetti({ particleCount: 40, spread: 50, origin: { y: 0.7 } });
         }
 
-        // Wait 3 seconds then show the Welcome screen
         setTimeout(() => {
             if(!document.getElementById('screen1').classList.contains('hidden')) {
                 showScreen(2);
